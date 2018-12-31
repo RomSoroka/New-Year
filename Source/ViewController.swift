@@ -44,6 +44,20 @@ class ViewController: UIViewController {
         
     }
     
+    @objc private func startRepeatAnimations() {
+        clouds[0].center.x = -50.0
+        clouds[1].center.x = -100.0
+        clouds[2].center.x = -70.0
+        clouds[3].center.x = -150.0
+        repeatedLinearMovement(clouds[0], toX: 550, duration: 6.5)
+        repeatedLinearMovement(clouds[1], toX: 600, duration: 7.5)
+        repeatedLinearMovement(clouds[2], toX: 500, duration: 8.0)
+        repeatedLinearMovement(clouds[3], toX: 650, duration: 13.0)
+        snowman.frame.origin.y = view.frame.size.height - snowman.frame.height - 20
+        jump(snowman, by: 150.0, duration: 0.5)
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self,
@@ -60,20 +74,7 @@ class ViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
-    @objc private func startRepeatAnimations() {
-        clouds[0].center.x = -50.0
-        clouds[1].center.x = -100.0
-        clouds[2].center.x = -70.0
-        clouds[3].center.x = -150.0
-        repeatedLinearMovement(clouds[0], toX: 550, duration: 6.5)
-        repeatedLinearMovement(clouds[1], toX: 600, duration: 7.5)
-        repeatedLinearMovement(clouds[2], toX: 500, duration: 8.0)
-        repeatedLinearMovement(clouds[3], toX: 650, duration: 13.0)
-        snowman.frame.origin.y = view.frame.size.height - snowman.frame.height - 20
-        jump(snowman, by: 150.0, duration: 0.5)
 
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -113,4 +114,3 @@ class ViewController: UIViewController {
     
 
 }
-
