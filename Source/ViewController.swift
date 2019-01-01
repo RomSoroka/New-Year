@@ -9,7 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var pig: UIImageView!
     @IBOutlet var clouds: [UIImageView]!
+    @IBOutlet weak var sunHolderView: UIView!
     @IBOutlet weak var sun: UIImageView!
     @IBOutlet weak var snowman: UIImageView!
     
@@ -110,6 +112,18 @@ class ViewController: UIViewController {
         } )
         
         
+    }
+    @IBAction func turnTheSun(_ sender: Any) {
+        UIView.transition(with: sunHolderView,
+                          duration: 0.75,
+                          options: .transitionFlipFromLeft,
+                          animations: {
+                            if self.sunHolderView.subviews.index(of: self.pig)! == 2 {
+                                self.sunHolderView.sendSubviewToBack(self.pig)
+                            } else {
+                                self.sunHolderView.bringSubviewToFront(self.pig)
+                            }
+        })
     }
     
 
